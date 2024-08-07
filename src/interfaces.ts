@@ -1,21 +1,25 @@
 export interface IFlow {
   name: string;
-  getSteps(): { [i: string]: IStep };
+
+  getSteps(): IStepMap;
+  addStep(step: IStep): Error | IStepMap;
+  removeStep(name: string): void | Error;
+  toJSON(): string;
+  toYAML(): string;
 }
 
 export interface IStep {
   name: string;
   action: EStepActions;
-  next: IStepNext;
+  next: IStepNextMap;
+
+  verify(): void | Error;
+  // addNext(name: string): void;
 }
 
-export interface IStepNext {
-  [i: string]: string;
-}
+export interface IStepNextMap extends Map<string, string> {}
 
-export interface IStepMap {
-  [i: string]: IStep;
-}
+export interface IStepMap extends Map<string, IStep> {}
 
 export enum EStepActions {
   Button = 'Button',
