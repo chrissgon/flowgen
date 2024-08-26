@@ -20,3 +20,6 @@ export const VALID_STEP: IStep = new Step(
 export const VALID_STEP_MAP: IStepMap = new Map([
   [VALID_STEP_NAME, VALID_STEP],
 ]);
+
+export const VALID_STEP_ANSWER = 'yes';
+export const INVALID_STEP = new Step('', EStepActions.Text, new Map());

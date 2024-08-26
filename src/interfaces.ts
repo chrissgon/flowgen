@@ -1,9 +1,9 @@
 export interface IFlow {
   name: string;
 
-  getSteps(): IStepMap;
   addStep(step: IStep): Error | IStepMap;
-  removeStep(name: string): void | Error;
+  getSteps(): IStepMap;
+  removeStep(stepName: string): void | Error;
   toJSON(): string;
   toYAML(): string;
 }
@@ -11,10 +11,11 @@ export interface IFlow {
 export interface IStep {
   name: string;
   action: EStepActions;
-  next: IStepNextMap;
 
+  addNext(answer: string, stepName: string): IStepNextMap | Error;
+  getNext(): IStepNextMap;
+  removeNext(answer: string): void | Error;
   verify(): void | Error;
-  // addNext(name: string): void;
 }
 
 export interface IStepNextMap extends Map<string, string> {}
