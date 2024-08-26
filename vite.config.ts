@@ -5,7 +5,7 @@ import { resolve } from 'path';
 export default defineConfig({
   build: {
     lib: {
-      name: 'lowbot-plugin',
+      name: 'flowgen',
       entry: resolve(__dirname, 'src/main.ts'),
       formats: ['es', 'cjs', 'umd'],
     },
